@@ -245,6 +245,23 @@ def terapkan_tema_neobrutalisme():
         white-space: pre-wrap;
         word-break: break-word;
     }
+
+    /* Sembunyikan Toolbar Kanan Atas (Fork, GitHub, Titik Tiga) & Header */
+    [data-testid="stToolbar"],
+    [data-testid="stHeader"],
+    [data-testid="stDecoration"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Sembunyikan Lencana & Profil Kanan Bawah */
+    .viewerBadge_container__1QSob,
+    .viewerBadge_link__1S137,
+    #MainMenu,
+    footer {
+        display: none !important;
+        visibility: hidden !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
