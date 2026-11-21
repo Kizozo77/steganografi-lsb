@@ -30,16 +30,20 @@ def terapkan_tema_neobrutalisme():
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap');
 
-    /* Sembunyikan Toolbar Atas, Dekorasi & Lencana Bawah */
-    [data-testid="stToolbar"],
-    [data-testid="stHeader"],
-    [data-testid="stDecoration"],
-    #MainMenu,
-    footer,
-    .viewerBadge_container__1QSob,
-    .viewerBadge_link__1S137 {
+    /* Sembunyikan Toolbar Atas, Dekorasi & Lencana/Profil Bawah */
+        [data-testid="stToolbar"],
+        [data-testid="stHeader"],
+        [data-testid="stDecoration"],
+        [data-testid="manage-app-button"],
+        [class*="viewerBadge"],
+        [class*="profileContainer"],
+        [class*="StatusWidget"],
+        #MainMenu,
+    footer {
         display: none !important;
         visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 
     /* Font & Warna Dasar */
