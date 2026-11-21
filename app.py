@@ -23,32 +23,43 @@ st.set_page_config(
 )
 
 # ==============================================================================
-# GAYA NEOBRUTALISME RAPI & KONTRAS TINGGI
+# GAYA NEOBRUTALISME RAPI & BERSIH TOTAL
 # ==============================================================================
 def terapkan_tema_neobrutalisme():
     st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap');
 
-    /* Terapkan font hanya pada elemen teks utama agar tidak merusak ikon internal */
+    /* Sembunyikan Toolbar Atas, Dekorasi & Lencana Bawah */
+    [data-testid="stToolbar"],
+    [data-testid="stHeader"],
+    [data-testid="stDecoration"],
+    #MainMenu,
+    footer,
+    .viewerBadge_container__1QSob,
+    .viewerBadge_link__1S137 {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Font & Warna Dasar */
     .stApp, .nb-header, .nb-box, .nb-result, p, label, h1, h2, h3, textarea, input {
         font-family: 'Space Grotesk', sans-serif !important;
         color: #111111 !important;
     }
 
-    /* Paksa latar belakang terang */
-    .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+    .stApp, [data-testid="stAppViewContainer"] {
         background-color: #FDFBF7 !important;
         color: #111111 !important;
     }
 
     .block-container {
         max-width: 740px;
-        padding-top: 2.5rem;
+        padding-top: 2rem;
         padding-bottom: 3rem;
     }
 
-    /* Header Kotak Neobrutalisme */
+    /* Header Neobrutalisme */
     .nb-header {
         background-color: #FFDE59;
         border: 3px solid #000000;
@@ -71,7 +82,7 @@ def terapkan_tema_neobrutalisme():
         font-weight: 500;
     }
 
-    /* Tab Navigasi Neobrutalisme (Kotak Tegas & Simetris) */
+    /* Tab Navigasi Neobrutalisme */
     .stTabs [data-baseweb="tab-list"] {
         gap: 12px;
         border-bottom: none !important;
@@ -109,25 +120,23 @@ def terapkan_tema_neobrutalisme():
         display: none !important;
     }
 
-    /* Kotak File Uploader & Perbaikan Tombol Upload Tunggal */
-    [data-testid="stFileUploader"] section {
+    /* Kotak Area File Uploader */
+    [data-testid="stFileUploaderDropzone"] {
         background-color: #FFFFFF !important;
         border: 2px dashed #000000 !important;
         border-radius: 0px !important;
         box-shadow: 4px 4px 0px #000000 !important;
         padding: 1.2rem 1.4rem !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
     }
-    [data-testid="stFileUploader"] section small,
-    [data-testid="stFileUploader"] section div {
+    [data-testid="stFileUploaderDropzoneInstructions"] div,
+    [data-testid="stFileUploaderDropzoneInstructions"] span,
+    [data-testid="stFileUploaderDropzoneInstructions"] small {
         color: #111111 !important;
         font-weight: 500 !important;
     }
 
-    /* Tombol Browse / Upload di dalam File Uploader (Anti Teks Ganda) */
-    [data-testid="stFileUploader"] section button {
+    /* HANYA Tombol Utama Browse Files di Dropzone (Tidak mengenai tombol hapus X) */
+    [data-testid="stFileUploaderDropzone"] > button {
         background-color: #FFDE59 !important;
         color: #000000 !important;
         border: 2px solid #000000 !important;
@@ -137,43 +146,52 @@ def terapkan_tema_neobrutalisme():
         font-family: 'Space Grotesk', sans-serif !important;
         font-weight: 700 !important;
         font-size: 0.9rem !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+        white-space: nowrap !important;
         min-width: 140px !important;
         cursor: pointer !important;
     }
-    /* Sembunyikan ikon ligatur & teks bawaan yang bertumpuk */
-    [data-testid="stFileUploader"] section button span,
-    [data-testid="stFileUploader"] section button svg {
+    [data-testid="stFileUploaderDropzone"] > button span,
+    [data-testid="stFileUploaderDropzone"] > button svg {
         display: none !important;
     }
-    /* Tampilkan satu label teks tunggal yang rapi */
-    [data-testid="stFileUploader"] section button::after {
+    [data-testid="stFileUploaderDropzone"] > button::after {
         content: "Pilih Gambar";
         color: #000000 !important;
         font-weight: 700 !important;
-        font-size: 0.9rem !important;
     }
-    [data-testid="stFileUploader"] section button:hover {
+    [data-testid="stFileUploaderDropzone"] > button:hover {
         background-color: #5CE1E6 !important;
         transform: translate(-1px, -1px);
         box-shadow: 4px 4px 0px #000000 !important;
     }
 
-    /* Kartu Nama File yang Sudah Diunggah */
+    /* Kartu File yang Sudah Diunggah (Terang & Kontras) */
     [data-testid="stFileUploaderFile"] {
-        background-color: #F4F4F4 !important;
+        background-color: #FFFDF5 !important;
         border: 2px solid #000000 !important;
+        box-shadow: 3px 3px 0px #000000 !important;
         border-radius: 0px !important;
-        padding: 6px 10px !important;
-        margin-top: 8px !important;
+        padding: 8px 12px !important;
+        margin-top: 12px !important;
     }
     [data-testid="stFileUploaderFile"] div,
     [data-testid="stFileUploaderFile"] span,
     [data-testid="stFileUploaderFile"] small {
         color: #000000 !important;
         font-weight: 600 !important;
+    }
+    /* Tombol Hapus File (X) agar tetap rapi & kecil */
+    [data-testid="stFileUploaderDeleteBtn"] button {
+        background-color: #FF6B6B !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        border-radius: 0px !important;
+        padding: 2px 6px !important;
+        min-width: auto !important;
+        box-shadow: 2px 2px 0px #000000 !important;
+    }
+    [data-testid="stFileUploaderDeleteBtn"] button::after {
+        content: none !important;
     }
 
     /* Kotak Input Teks & Text Area */
@@ -190,7 +208,7 @@ def terapkan_tema_neobrutalisme():
         opacity: 1 !important;
     }
 
-    /* Tombol Utama & Tombol Download */
+    /* Tombol Aksi Utama & Tombol Download */
     .stButton > button, .stDownloadButton > button {
         background-color: #FF914D !important;
         border: 2px solid #000000 !important;
@@ -244,23 +262,6 @@ def terapkan_tema_neobrutalisme():
         color: #000000 !important;
         white-space: pre-wrap;
         word-break: break-word;
-    }
-
-    /* Sembunyikan Toolbar Kanan Atas (Fork, GitHub, Titik Tiga) & Header */
-    [data-testid="stToolbar"],
-    [data-testid="stHeader"],
-    [data-testid="stDecoration"] {
-        display: none !important;
-        visibility: hidden !important;
-    }
-
-    /* Sembunyikan Lencana & Profil Kanan Bawah */
-    .viewerBadge_container__1QSob,
-    .viewerBadge_link__1S137,
-    #MainMenu,
-    footer {
-        display: none !important;
-        visibility: hidden !important;
     }
     </style>
     """, unsafe_allow_html=True)
